@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const authRoute = require("./routes/Auth");
 const usersRoute = require("./routes/Users");
-const movieRoute = require("./routes/Movies");
+const moviesRoute = require("./routes/Movies");
+const listsRoute = require("./routes/Lists");
 
 dotenv.config();
 
@@ -22,7 +23,8 @@ app.use(express.json());
 
 app.use("/api/Auth", authRoute);
 app.use("/api/Users", usersRoute);
-app.use("/api/Movies", movieRoute);
+app.use("/api/Movies", moviesRoute);
+app.use("/api/Lists", listsRoute);
 
 app.listen(8800, ()=>{
     console.log("Backend Server is running!");
