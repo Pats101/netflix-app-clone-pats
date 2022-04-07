@@ -15,8 +15,8 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route exact path="/netflix-app-clone-pats/" element={ user ? <Home /> : <Navigate to="/netflix-app-clone-pats/register" replace/>} />
-        <Route exact path="/netflix-app-clone-pats/register" element={ !user ? <Register /> : <Navigate to="/netflix-app-clone-pats/" replace/>} />
+        <Route exact path="/netflix-app-clone-pats" element={ user ? <Home /> : <Navigate to="/netflix-app-clone-pats/register" replace/>} />
+        <Route exact path="/netflix-app-clone-pats/register" element={ !user ? <Register /> : <Navigate to="/netflix-app-clone-pats" replace/>} />
         <Route exact path="/netflix-app-clone-pats/login" element={ !user ? <Login /> : <Navigate to="/netflix-app-clone-pats/login" replace/>} />
         { user && (
           <>

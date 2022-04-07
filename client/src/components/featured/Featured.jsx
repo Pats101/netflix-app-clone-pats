@@ -1,7 +1,29 @@
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
+import { useEffect, useState } from "react";
 import "./Featured.scss";
+import axios from "axios";
 
-export default function Featured({type}) {
+export default function Featured({ type }) {
+    const [content,setContent] = useState({});
+
+    useEffect(() => {
+        const getRandomContent = async ()=> {
+            try {
+                const res = await axios.get(`/movies/random?type=${type}`,
+                    {
+                        headers: {
+                        token: 
+                            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNGM0MzA0NjZiZjU2YzEwNDdjYmNhZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0OTM2OTEwNSwiZXhwIjoxNjQ5ODAxMTA1fQ.ZfFw5p11CKLyp0KBMueuVyDwMIB_EcCAh9KIzGdjy4I"
+                        },
+                    }                
+                );
+                setContent(res.data[0]);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        getRandomContent();
+    },[type]);
   return (
     <div className="featured">
         {type && (
@@ -25,11 +47,11 @@ export default function Featured({type}) {
                 </select>
             </div>
         )}
-        <img src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" />
+        <img src={content.img} alt="" />
         <div className="info">
-            <img src="https://static1.colliderimages.com/wordpress/wp-content/uploads/2022/03/The-Incredible-Hulk-2.jpg" alt="" />
+            <img src={content.imgTitle} alt="" />
             <span className="desc">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur maxime molestias expedita sit id exercitationem laboriosam eveniet veritatis natus error, cupiditate necessitatibus quisquam unde non quasi ipsa hic asperiores ipsum.
+                {content.desc}
             </span>
             <div className="buttons">
                 <button className="play">
