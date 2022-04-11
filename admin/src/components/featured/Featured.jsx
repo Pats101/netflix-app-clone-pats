@@ -42,6 +42,38 @@ const Featured = () => {
                     </div>
                 </div>
             </div>
+            <div className="netflix_featured">
+                <div className="featuredItemNetflix">
+                    <span className="featureTitle">Revenue</span>
+                    <div className="featuredMoneyContainer">
+                        <span className="featuredMoney">R120.00</span>
+                        <div className="itemResult negative">
+                            <span className="featuredMoneyRate">-11.4 <KeyboardArrowDownIcon className="featuredIcon negative" /> </span>
+                        </div>
+                    </div>
+                    <span className="featuredSub">Compared to last month</span>
+                </div>
+                <div className="featuredItemNetflix">
+                    <span className="featureTitle">Sales</span>
+                    <div className="featuredMoneyContainer">
+                        <span className="featuredMoney">R200.00</span>
+                        <div className="itemResult negative">
+                            <span className="featuredMoneyRate">-1.4 <KeyboardArrowDownIcon className="featuredIcon negative" /> </span>
+                        </div>
+                    </div>
+                    <span className="featuredSub">Compared to last month</span>
+                </div>
+                <div className="featuredItemNetflix">
+                    <span className="featureTitle">Cost</span>
+                    <div className="featuredMoneyContainer">
+                        <span className="featuredMoney">R300.00</span>
+                        <div className="itemResult positive">
+                            <span className="featuredMoneyRate">+2.4 <KeyboardArrowUpOutlinedIcon className="featuredIcon positive" /> </span>
+                        </div>
+                    </div>
+                    <span className="featuredSub">Compared to last month</span>
+                </div>
+            </div>
         </div>
     </div>
   )

@@ -1,7 +1,6 @@
 import "./Sidebar.scss";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import StoreIcon from '@mui/icons-material/Store';
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import AssessmentIcon from '@mui/icons-material/Assessment';
@@ -14,6 +13,7 @@ import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { DarkModeContext } from "../../context/darkModeContext";
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 
 const Sidebar = () => {
     const {dispatch} = useContext(DarkModeContext);
@@ -39,10 +39,10 @@ const Sidebar = () => {
                         <span>Users</span>
                     </li>
                 </Link>
-                <Link to="/products" style={{ textDecoration: "none" }}>
+                <Link to="/movies" style={{ textDecoration: "none" }}>
                     <li>
-                        <StoreIcon className="icon" />
-                        <span>Products</span>
+                        <PlayCircleOutlineIcon className="icon" />
+                        <span>Movies</span>
                     </li>
                 </Link>
                 <li>
