@@ -8,6 +8,7 @@ import Widget from '../../components/widget/Widget';
 import "./Home.scss";
 import { useState, useEffect, useMemo } from "react";
 import axios from "axios";
+import NewUsersTable from '../../components/new-users-table/NewUsersTable';
 
 const Home = () => {
   const MONTHS = useMemo(() => [
@@ -32,7 +33,7 @@ const Home = () => {
           try {
             const res = await axios.get("/users/stats", {
               Headers: {
-                token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNGM0MzA0NjZiZjU2YzEwNDdjYmNhZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0OTU0MzI3OCwiZXhwIjoxNjQ5OTc1Mjc4fQ.sJqE2tpW8YCJLpjGkTqD_3U2amZFMbBPFtXah6MDKvw"
+                token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNGM0MzA0NjZiZjU2YzEwNDdjYmNhZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0OTU5MTM2MSwiZXhwIjoxNjUwMDIzMzYxfQ.E7OeHcTk6yYBhZAwo0qWZHUjW8LTew3949QOCAyYSGE"
               },
             });
             const statsList = res.data.sort(function (a, b) {
@@ -64,7 +65,7 @@ const Home = () => {
             <Chart title="Last 6 Months (Revenue)" aspect={ 2 / 1} data={userStats} />
           </div>
           <div className="listContainer">
-            <div className="listTitle">Latest Transactions</div>
+            <NewUsersTable />
             <Table />
           </div>
         </div>

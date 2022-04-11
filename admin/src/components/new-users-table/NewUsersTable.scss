@@ -1,0 +1,60 @@
+.newUsersTable {
+    flex: 1;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47); 
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    padding: 20px;
+    margin-right: 20px;
+
+    .newUserT {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .newUserTList {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        .newUserTListItem {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px 0px;
+            .newUserTImg {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .newUserTUser {
+                display: flex;
+                flex-direction: column;
+
+                .newUserTUsername {
+                    font-weight: 600;
+                }
+
+                .newUserTUserTitle {
+                    font-weight: 300;
+                }
+            }
+
+            .newUserTButton {
+                display: flex;
+                align-items: center;
+                border: none;
+                border-radius: 10px;
+                padding: 7px 10px;
+                background-color: #eeeef7;
+                color: #555;
+                cursor: pointer;
+
+                .newUserTIcon {
+                    font-size: 16px;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}

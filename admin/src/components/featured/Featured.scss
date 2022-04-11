@@ -75,5 +75,57 @@
                 }
             }
         }
+
+        .netflix_featured {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+
+            .featuredItemNetflix{
+                flex: 1;
+                margin: 0px 5px;
+                padding: 3px;
+                border-radius: 10px;
+                cursor: pointer;
+                -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47); 
+                box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+
+                .featureTitle {
+                    font-size: 20px;
+                }
+
+                .featuredMoneyContainer {
+                    margin: 10px 0px;
+                    display: flex;
+                    align-items: center;
+
+                    .featuredMoney {
+                        font-size: 15px;
+                        font-weight: 600;
+
+                    }
+                    .itemResult {
+                        display: flex;
+                        align-items: center;
+                        margin-top: 10px;
+                        font-size: 14px;
+
+                        &.positive {
+                            color: green;
+                        }
+    
+                        &.negative {
+                            color: red;
+                        }
+                    }
+                }
+
+                .featuredSub {
+                    font-size: 12px;
+                    color: gray;
+                }
+            }
+        }
     }
 }
