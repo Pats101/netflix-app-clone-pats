@@ -118,6 +118,6 @@ const List = () => {
       </Table>
     </TableContainer>
   )
-}
+};
 
-export default List
+export default List;
