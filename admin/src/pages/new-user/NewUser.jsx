@@ -1,16 +1,16 @@
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import "./New.scss";
+import "./NewUser.scss";
 import { useState } from "react";
 
 const New = ({inputs, title}) => {
 
   const [file,setFile] = useState("");
   return (
-    <div className="new">
+    <div className="newUser">
         <Sidebar/>
-        <div className="newContainer">
+        <div className="newUserContainer">
           <Navbar/>
           <div className="top">
             <h1>{title}</h1>
@@ -51,4 +51,4 @@ const New = ({inputs, title}) => {
   )
 }
 
-export default New
+export default New;

@@ -1,8 +1,8 @@
-.new {
+.newUser {
     width: 100%;
     display: flex;
 
-    .newContainer {
+    .newUserContainer {
         flex: 6;
 
         .top,
@@ -34,6 +34,7 @@
                 flex: 2;
 
                 form {
+                    margin-top: 10px;
                     display: flex;
                     flex-wrap: wrap;
                     gap: 30px;
