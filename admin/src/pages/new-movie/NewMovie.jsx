@@ -2,24 +2,79 @@ import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import "./NewMovie.scss";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { storage } from "../../firebase";
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { createMovie } from "../../context/movieContext/MoviesAPICalls";
+import { MovieContext } from "../../context/movieContext/MovieContext";
 
 const NewMovie = () => {
 
+  const {dispatch} = useContext(MovieContext);
+
   const [movie,setMovie] = useState(null);
-  const [img,setImg] = useState(null);
+  // const [img,setImg] = useState(null);
   const [imgTitle,setImgTitle] = useState(null);
   const [imgSm,setImgSm] = useState(null);
   const [trailer,setTrailer] = useState(null);
   const [video,setVideo] = useState(null);
+  const [uploaded,setUploaded] = useState(0);
+  
+  const [file,setFile] = useState("");
 
   const handleChange = (e) => {
     const value = e.target.value;
-    setMovie({...movie, [e.target.name]: value });
+    setMovie({ ...movie, [e.target.name]: value });
   };
-  console.log(img); 
 
-  const [file,setFile] = useState("");
+  const upload = (items) => {
+    items.forEach((item) =>{
+      const fileName = new Date().getTime() + item.label + item.file.name;
+      const storageRef = ref(storage, `/content/${fileName}`);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      uploadTask.on("state_changes", (snapshot) => {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done!");
+        switch (snapshot.state) {
+          case 'paused':
+            console.log('Upload is paused');
+            break;
+          case 'running':
+            console.log('Upload is running');
+            break;
+        }
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setMovie((prev) => {
+            return { ...prev, [item.label]: downloadURL };
+          });
+          setUploaded((prev) => prev + 1);
+        });
+      }
+      );
+    });
+  };
+  
+  const handleUpload = (e) => {
+    e.preventDefault();
+    upload([
+      { file: file, label: "img" },
+      { file: imgTitle, label: "imgTitle" },
+      { file: imgSm, label: "imgSm" },
+      { file: trailer, label: "trailer" },
+      { file: video, label: "video" },
+    ]);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createMovie(movie,dispatch);
+  };
+
   return (
     <div className="newMovie">
         <Sidebar/>
@@ -36,7 +91,6 @@ const NewMovie = () => {
                   ? URL.createObjectURL(file) 
                   : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"} 
                 alt="" 
-                onChange={e=>setImg(e.target.files[0])} 
               />
             </div>
             <div className="right">
@@ -54,11 +108,11 @@ const NewMovie = () => {
                 </div>
                 <div className="addMovieItem">
                   <label>Title Image</label>
-                  <input type="file" id="imgTitle" name="imgTitle" onChange={e=>setImgTitle(e.target.files[0])} />
+                  <input type="file" id="imgTitle" name="imgTitle" onChange={(e)=>setImgTitle(e.target.files[0])} />
                 </div>
                 <div className="addMovieItem">
                   <label>Thumbnail Image</label>
-                  <input type="file" id="imgSm" name="imgSm" onChange={e=>setImgSm(e.target.files[0])} />
+                  <input type="file" id="imgSm" name="imgSm" onChange={(e) => setImgSm(e.target.files[0])} />
                 </div>
                 <div className="addMovieItem">
                   <label>Title</label>
@@ -93,13 +147,17 @@ const NewMovie = () => {
                 </div>
                 <div className="addMovieItem">
                   <label>Trailer</label>
-                  <input type="file" name="trailer" onChange={e=>setTrailer(e.target.files[0])} />
+                  <input type="file" name="trailer" onChange={(e)=>setTrailer(e.target.files[0])} />
                 </div>
                 <div className="addMovieItem">
                   <label>Video</label>
-                  <input type="file" name="video" onChange={e=>setVideo(e.target.files[0])} />
+                  <input type="file" name="video" onChange={(e)=>setVideo(e.target.files[0])} />
                 </div>
-                <button>Create New Movie</button>
+                {uploaded === 5 ? (
+                  <button onClick={handleSubmit}>Create Movie</button>
+                ) : (
+                  <button onClick={handleUpload}>Upload Movie</button>
+                )}
               </form>
             </div>
           </div>

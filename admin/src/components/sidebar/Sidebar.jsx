@@ -10,6 +10,7 @@ import PsychologyOutlinedIcon from '@mui/icons-material/PsychologyOutlined';
 import SettingsApplicationsOutlinedIcon from '@mui/icons-material/SettingsApplicationsOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
+import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { DarkModeContext } from "../../context/darkModeContext";
@@ -28,10 +29,12 @@ const Sidebar = () => {
         <div className="center">
             <ul>
                 <p className="title">MAIN</p>
-                <li>
-                    <DashboardIcon className="icon" />
-                    <span>Dashboard</span>
-                </li>
+                <Link to="/" style={{ textDecoration: "none" }}>
+                    <li>
+                        <DashboardIcon className="icon" />
+                        <span>Dashboard</span>
+                    </li>
+                </Link>
                 <p className="title">LISTS</p>
                 <Link to="/users" style={{ textDecoration: "none" }}>
                     <li>
@@ -45,10 +48,12 @@ const Sidebar = () => {
                         <span>Movies</span>
                     </li>
                 </Link>
-                <li>
-                    <CreditCardOutlinedIcon className="icon" />
-                    <span>Orders</span>
-                </li>
+                <Link to="/lists" style={{ textDecoration: "none" }}>
+                    <li>
+                        <FormatListBulletedOutlinedIcon className="icon" />
+                        <span>Lists</span>
+                    </li>
+                </Link>
                 <li>
                     <LocalShippingIcon className="icon" />
                     <span>Delivery</span>
