@@ -21,7 +21,7 @@ export const createMoviesFailure = () => ({
     type: "CREATE_MOVIE_FAILURE",
 });
 
-// Create Movie
+// Update Movie
 export const updateMoviesStart = () => ({
     type: "UPDATE_MOVIE_START",
 });

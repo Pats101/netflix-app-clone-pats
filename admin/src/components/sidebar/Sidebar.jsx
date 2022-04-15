@@ -1,7 +1,6 @@
 import "./Sidebar.scss";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
