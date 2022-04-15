@@ -9,6 +9,9 @@ import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/authContext/AuthContext";
 import NewMovie from "./pages/new-movie/NewMovie";
+import Lists from "./pages/lists/Lists";
+import ListView from "./pages/lists-view-new/ListView";
+import NewList from "./pages/new-list/NewList";
 
 function App() {
 
@@ -31,6 +34,11 @@ function App() {
                 <Route index element={ <List /> } />
                 <Route path=":movieId" element={ <Single /> }/>
                 <Route path="newMovie" element={ <NewMovie /> }></Route>
+              </Route>
+              <Route path="lists">
+                <Route index element={ <Lists /> } />
+                <Route path=":listId" element={ <ListView /> }/>
+                <Route path="newList" element={ <NewList /> }></Route>
               </Route>
             </Route>
           }
