@@ -33,7 +33,7 @@ const Home = () => {
           try {
             const res = await axios.get("/users/stats", {
               Headers: {
-                token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNGM0MzA0NjZiZjU2YzEwNDdjYmNhZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0OTU5MTM2MSwiZXhwIjoxNjUwMDIzMzYxfQ.E7OeHcTk6yYBhZAwo0qWZHUjW8LTew3949QOCAyYSGE"
+                token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
               },
             });
             const statsList = res.data.sort(function (a, b) {

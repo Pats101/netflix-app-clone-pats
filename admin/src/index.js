@@ -5,6 +5,7 @@ import { DarkModeContextProvider } from './context/darkModeContext';
 import { AuthContextProvider } from "./context/authContext/AuthContext";
 import { MovieContextProvider } from "./context/movieContext/MovieContext";
 import { ListsContextProvider } from "./context/listContext/ListsContext";
+import { UsersContextProvider } from "./context/userContext/UsersContext";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,7 +13,9 @@ ReactDOM.render(
       <AuthContextProvider>
         <MovieContextProvider>
           <ListsContextProvider>
-            <App /> 
+            <UsersContextProvider>
+              <App /> 
+            </UsersContextProvider>
           </ListsContextProvider>
         </MovieContextProvider>
       </AuthContextProvider>

@@ -1,20 +1,19 @@
-import "./Single.scss";
+import "./SingleMovie.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import PublishOutlinedIcon from '@mui/icons-material/PublishOutlined';
 import { Link, useLocation } from "react-router-dom";
 
-const Single = () => {
+const SingleMovie = () => {
   const location = useLocation();
-  const user = location.state?.user;
-  console.log(user);
+  const movie = location.state?.movie;
   return (
     <div className="single">
         <Sidebar />
         <div className="singleContainer">
           <Navbar />
           <div className="movieButtonContainer">
-            <Link to="/newUser">
+            <Link to="/newMovie">
                 <button className="movieAddButton">Create</button>
             </Link>
           </div>
@@ -24,30 +23,30 @@ const Single = () => {
               <h1 className="title">Movie</h1>
               <div className="item">
                 <img 
-                  src={user.img}
+                  src={movie.img}
                   alt="" 
                   className="itemImg" />
                   <div className="details">
-                    <h1 className="itemTitle">{user.username}</h1>
+                    <h1 className="itemTitle">{movie.title}</h1>
                     <div className="detailItem">
                       <span className="itemKey">id:</span>
-                      <span className="itemValue">{user._id}</span>
+                      <span className="itemValue">{movie._id}</span>
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">genre:</span>
-                      <span className="itemValue">{user.genre}</span>
+                      <span className="itemValue">{movie.genre}</span>
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">year:</span>
-                      <span className="itemValue">{user.year}</span>
+                      <span className="itemValue">{movie.year}</span>
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">limit:</span>
-                      <span className="itemValue">{user.limit}</span>
+                      <span className="itemValue">{movie.limit}</span>
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">desc:</span>
-                      <span className="itemValue">{user.desc}</span>
+                      <span className="itemValue">{movie.desc}</span>
                     </div>
                   </div>
               </div>
@@ -92,4 +91,4 @@ const Single = () => {
   );
 };
 
-export default Single
+export default SingleMovie;

@@ -7,10 +7,12 @@ import { storage } from "../../firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { createMovie } from "../../context/movieContext/MoviesAPICalls";
 import { MovieContext } from "../../context/movieContext/MovieContext";
+import { useNavigate } from "react-router-dom";
 
 const NewMovie = () => {
 
   const {dispatch} = useContext(MovieContext);
+  const navigate = useNavigate();
 
   const [movie,setMovie] = useState(null);
   // const [img,setImg] = useState(null);
@@ -73,6 +75,7 @@ const NewMovie = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     createMovie(movie,dispatch);
+    navigate("/movies");
   };
 
   return (

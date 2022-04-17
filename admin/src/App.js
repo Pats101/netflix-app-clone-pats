@@ -1,7 +1,6 @@
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
-import Single from "./pages/single/Single";
 import NewUser from "./pages/new-user/NewUser";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./style/Dark.scss";
@@ -12,6 +11,9 @@ import NewMovie from "./pages/new-movie/NewMovie";
 import Lists from "./pages/lists/Lists";
 import ListView from "./pages/lists-view-new/ListView";
 import NewList from "./pages/new-list/NewList";
+import MovieView from "./pages/movie-view-new/MovieView";
+import ListOfUsers from "./pages/list-users/ListOfUsers";
+import UserView from "./pages/user-view-new/UserView";
 
 function App() {
 
@@ -26,13 +28,13 @@ function App() {
             <Route path="/">
               <Route index element={ <Home /> } />
               <Route path="users">
-                <Route index element={ <List /> } />
-                <Route path=":userId" element={ <Single /> }/>
+                <Route index element={ <ListOfUsers /> } />
+                <Route path=":userId" element={ <UserView /> }/>
                 <Route path="newUser" element={ <NewUser /> }></Route>
               </Route>
               <Route path="movies">
                 <Route index element={ <List /> } />
-                <Route path=":movieId" element={ <Single /> }/>
+                <Route path=":movieId" element={ <MovieView /> }/>
                 <Route path="newMovie" element={ <NewMovie /> }></Route>
               </Route>
               <Route path="lists">

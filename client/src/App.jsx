@@ -17,10 +17,10 @@ const App = () => {
       <Routes>
         <Route exact path="/netflix-app-clone-pats" element={ user ? <Home /> : <Navigate to="/netflix-app-clone-pats/register" replace/>} />
         <Route exact path="/netflix-app-clone-pats/register" element={ !user ? <Register /> : <Navigate to="/netflix-app-clone-pats" replace/>} />
-        <Route exact path="/netflix-app-clone-pats/login" element={ !user ? <Login /> : <Navigate to="/netflix-app-clone-pats/login" replace/>} />
+        <Route exact path="/netflix-app-clone-pats/login" element={ !user ? <Login /> : <Navigate to="/netflix-app-clone-pats" replace/>} />
         { user && (
           <>
-            <Route path="/netflix-app-clone-pats/movies" element={ <Home type="movies" /> } />
+            <Route path="/netflix-app-clone-pats/movies" element={ <Home type="movie" /> } />
             <Route path="/netflix-app-clone-pats/series" element={ <Home type="series" /> } />
             <Route path="/netflix-app-clone-pats/watch" element={<Watch />} />
           </>

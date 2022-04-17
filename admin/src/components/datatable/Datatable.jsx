@@ -60,7 +60,7 @@ const Datatable = () => {
   return (
     <div className="datatable">
         <div className="dataTableTitle">
-            Add New User
+            Add New Movie
             <Link to="/movies/newMovie" className="link">
                 Add New
             </Link>

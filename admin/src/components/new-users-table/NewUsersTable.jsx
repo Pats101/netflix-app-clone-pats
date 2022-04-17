@@ -10,7 +10,7 @@ const NewUsersTable = () => {
       try {
         const res = await axios.get("users?new=true", {
           headers: {
-            token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNGM0MzA0NjZiZjU2YzEwNDdjYmNhZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0OTcxMDY2MywiZXhwIjoxNjUwMTQyNjYzfQ.sFpAG4jbbJMgT_A66ihF8vDlayPxo1T0XF7vxw223eQ"
+            token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
           },
         });
         // console.log(res)
